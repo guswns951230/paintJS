@@ -63,6 +63,7 @@ function deleteCanvas() {
   ctx.strokeStyle = INITIAL_COLOR;
   ctx.fillStyle = INITIAL_COLOR;
   ctx.lineWidth = 2.5;
+  range.value = 2.5;
 
   painting = false;
   filling = false;
