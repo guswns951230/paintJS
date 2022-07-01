@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName('jsColor');
 const range = document.querySelector('#jsRange');
 const mode = document.querySelector('#jsMode');
 const saveBtn = document.querySelector('#jsSave');
+const deleteBtn = document.querySelector('#jsDelete');
 
 const INITIAL_COLOR = '#2c2c2c';
 const CANVAS_SIZE = 700;
@@ -52,6 +53,23 @@ function handleRangeChange(event) {
   ctx.lineWidth = size;
 }
 
+function deleteCanvas() {
+  canvas.width = CANVAS_SIZE;
+  canvas.height = CANVAS_SIZE;
+
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = INITIAL_COLOR;
+  ctx.fillStyle = INITIAL_COLOR;
+  ctx.lineWidth = 2.5;
+
+  painting = false;
+  filling = false;
+
+  mode.innerText = 'Fill';
+}
+
 function handleModeClick() {
   if (filling === true) {
     filling = false;
@@ -70,7 +88,6 @@ function handleCanvasClick() {
 
 function handleCM(event) {
   event.preventDefault();
-  console.log(event);
 }
 
 function handleSaveClick() {
@@ -105,4 +122,8 @@ if (mode) {
 
 if (saveBtn) {
   saveBtn.addEventListener('click', handleSaveClick);
+}
+
+if (deleteBtn) {
+  deleteBtn.addEventListener('click', deleteCanvas);
 }
